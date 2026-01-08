@@ -28,7 +28,7 @@ It removes the unnecessary stuff, tones down the rest and shows you exactly what
 No cloud, no assistants, no magic.
 Everything is local, deterministic and reversible.
 
-Under the hood this is a very small, very focused fork of my earlier project CrapFixer.
+**Under the hood this is a very small, very focused fork of my earlier project [CrapFixer](https://github.com/builtbybel/CrapFixer)**.
 Localization never really happened there.
 Winslop will likely get it soon, mostly because the codebase is drastically smaller.
 Nothing fancy. Just tools.
