@@ -14,11 +14,10 @@ If this tool needs marketing, it probably shouldnt exist 😆
 To be clear:  
 **Windows is not bad.**  
 I actually like it.
+
 **But the direction of Windows 11 is.**  
 And I probably hate it more than I'm willing to admit.
-
-So I shipped this again.  
-Cheaper than therapy. Comes with toggles.
+So I shipped this again. Cheaper than therapy. Comes with toggles.
 
 **The slop is.**
 Winslop does exactly what the name suggests:
