@@ -1,3 +1,5 @@
+# Built to remove things. Not to impress you.
+
 > *“We need to get beyond the arguments of slop vs sophistication…”*  
 > — Satya Nadella
 > 
