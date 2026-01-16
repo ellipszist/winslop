@@ -9,6 +9,7 @@
 - [Privacy & Telemetry](#privacy--telemetry)
 - [Ads & Recommendations](#ads--recommendations)
 - [AI (Copilot & Recall)](#ai-copilot--recall)
+- [Plugins](#plugins)
 
 ---
 
@@ -425,4 +426,119 @@
 **Recommended:** `0`  
 **Undo:** `1`  
 
+---
 
+## Plugins
+
+> Plugins are PowerShell scripts that run additional tweaks or external tools.
+> Some plugins require Administrator privileges.
+
+### ChrisTitusApp
+**Info:** Downloads and executes the Chris Titus Tech Windows utility script.  
+**Command:** `irm christitus.com/win | iex`  
+**Requirements:** Internet connection.  
+**Notes:** This runs remote code directly in PowerShell. Only use if you trust the source.
+
+### Create Restore Point
+**Info:** Creates a System Restore Point named `Bloatynosy NueEx Restore Point`.  
+**Requirements:** Must be run as Administrator.  
+**How it works:** Uses WMI (`Win32_SystemRestore`) to create the restore point and shows progress + a completion dialog.  
+
+### Disable Snap Assist Flyout (NX)
+**Info:** Disables the Snap Assist flyout in Windows 11.  
+**Check:** `HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced` → `EnableSnapAssistFlyout`  
+**Do:** Sets `EnableSnapAssistFlyout = 0` and restarts Explorer.  
+**Undo:** Sets `EnableSnapAssistFlyout = 1` and restarts Explorer.  
+**Expected (enabled state):** `EnableSnapAssistFlyout = 0x0`
+
+### File Extensions Visibility (NX)
+**Info:** Hides known file extensions and disables viewing super hidden files.  
+**Check:**  
+- `HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced` → `HideFileExt`  
+- `HKCU\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced` → `ShowSuperHidden`  
+**Do:** Sets `HideFileExt = 1` and `ShowSuperHidden = 0`, then restarts Explorer.  
+**Undo:** Sets `HideFileExt = 0` and `ShowSuperHidden = 1`, then restarts Explorer.  
+**Expected (enabled state):** `HideFileExt = 0x1`, `ShowSuperHidden = 0x0`
+
+### Remove Ask Copilot (NX)
+**Info:** Removes the “Ask Copilot” context menu entry.  
+**Check/Do/Undo:** Uses the Shell Extensions “Blocked” list.  
+**Registry:** `HKCU\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked`  
+**Do:** Adds CLSID `{CB3B0003-8088-4EDE-8769-8B354AB2FF8C}`  
+**Undo:** Deletes that CLSID value.
+
+### Remove Edit with Clipchamp (NX)
+**Info:** Removes the “Edit with Clipchamp” context menu entry.  
+**Registry:** `HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked`  
+**Do:** Adds CLSID `{8AB635F8-9A67-4698-AB99-784AD929F3B4}`  
+**Undo:** Deletes that CLSID value.
+
+### Remove Edit with Notepad (NX)
+**Info:** Removes the “Edit with Notepad” context menu entry.  
+**Registry:** `HKCU\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked`  
+**Do:** Adds CLSID `{CA6CC9F1-867A-481E-951E-A28C5E4F01EA}`  
+**Undo:** Deletes that CLSID value.
+
+### Remove Edit with Photos (NX)
+**Info:** Removes the “Edit with Photos” context menu entry.  
+**Registry:** `HKCU\Software\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked`  
+**Do:** Adds CLSID `{BFE0E2A4-C70C-4AD7-AC3D-10D1ECEBB5B4}`  
+**Undo:** Deletes that CLSID value.
+
+### Remove default apps
+**Info:** Uninstalls a large list of built-in Windows apps (Appx) for all users and removes provisioned packages, then disables re-install/suggested app behavior.  
+**Requirements:** Elevated privileges (Admin) and PowerShell execution allowed.  
+**Actions:**
+- Removes packages via `Get-AppxPackage ... | Remove-AppxPackage -AllUsers`
+- Removes provisioned packages via `Remove-AppxProvisionedPackage -Online`
+- Sets multiple `ContentDeliveryManager` values to `0`
+- Sets `HKLM:\SOFTWARE\Policies\Microsoft\WindowsStore` → `AutoDownload = 2`
+- Sets `HKLM:\SOFTWARE\Policies\Microsoft\Windows\CloudContent` → `DisableWindowsConsumerFeatures = 1`  
+**Undo:** Not provided (you would need to reinstall apps manually).
+
+### Remove Windows AI
+**Info:** Downloads and executes an external script intended to remove Windows AI components.  
+**Command:** `iwr https://raw.githubusercontent.com/zoicware/RemoveWindowsAI/main/RemoveWindowsAi.ps1 | iex`  
+**Requirements:** Internet connection.  
+**Notes:** This runs remote code directly in PowerShell. Only use if you trust the source.
+
+### Restart Explorer
+**Info:** Restarts Windows Explorer (explorer.exe). Useful after registry tweaks so changes apply immediately.  
+**Actions:**
+- Stops Explorer (`Stop-Process -Name explorer -Force`)
+- Starts Explorer (`Start-Process explorer.exe`)
+**Undo:** Not required.
+
+### Restore all built-in apps
+**Info:** Attempts to restore/re-register built-in Windows apps for all users.  
+**Actions:**
+- Re-registers AppX packages using `Add-AppxPackage -Register`
+- Targets packages for all users where possible
+**Notes:** Depending on Windows version, some apps might require Microsoft Store or additional components.
+**Undo:** Not required.
+
+### Shutdown Time (NX)
+**Info:** Sets a lower `WaitToKillServiceTimeout` value to speed up shutdown.  
+**Registry:** `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control`  
+**Value:** `WaitToKillServiceTimeout`  
+**Do:** Sets to a faster value (e.g., `1000`) and applies immediately.  
+**Undo:** Restores the default/previous value (commonly `5000`).  
+
+### Uninstall OneDrive
+**Info:** Uninstalls Microsoft OneDrive and removes leftover OneDrive integration where possible.  
+**Requirements:** Administrator privileges recommended.  
+**Actions:**
+- Runs the OneDrive installer with `/uninstall` (per-user / per-machine depending on system)
+- Removes remaining OneDrive folders (if present)
+- Attempts to remove OneDrive from Explorer integration (where applicable)
+**Undo:** Reinstall OneDrive manually (e.g., via Microsoft installer).
+
+### User Account Control (NX)
+**Info:** Toggles User Account Control (UAC) behavior.  
+**Registry:** `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System`  
+**Values (common):**
+- `EnableLUA`
+- `ConsentPromptBehaviorAdmin`
+- `PromptOnSecureDesktop`
+**Notes:** Changing UAC may require a reboot to fully apply.
+**Undo:** Restores the previous/default UAC settings.
