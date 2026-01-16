@@ -59,7 +59,7 @@ Winslop targets **slop**, not Windows.
 Yes.  
 There's a small, lightweight entry guide to get you going:
 
-- **Quick Start / Help:** https://github.com/builtbybel/Winslop/blob/main/Help.md
+- **Quick Start / Help:** https://github.com/builtbybel/Winslop/blob/main/docs/Help.md
 </details>
 
 <details>
