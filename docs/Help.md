@@ -19,12 +19,11 @@ Quick links:
 4. Select the tweaks you want (checkboxes).
 5. Use **Apply selected changes** to apply the checked items.
 
-
-<img width="1031" height="880" alt="Winslop_annotated_outside_EN_v3" src="https://github.com/user-attachments/assets/f661f0ee-b87b-401e-9121-f48addc38fe3" />
-
 ---
 
 ## UI overview
+
+<img width="1031" height="880" alt="Winslop_annotated_outside_EN_v3" src="https://github.com/user-attachments/assets/f661f0ee-b87b-401e-9121-f48addc38fe3" />
 
 ### Top bar
 - **Menu button (☰)**  
