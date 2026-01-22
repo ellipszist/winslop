@@ -152,7 +152,7 @@
 **Recommended:** `0`  
 **Undo:** `1`  
 
-### Don't Allow to Import of data from other browsers on each launch
+### Don't import data from other browsers at startup
 **Info:** Disables importing of browser data from other browsers on each launch.  
 **Registry:** `HKEY_LOCAL_MACHINE\Software\Policies\Microsoft\Edge`  
 **Value:** `ImportOnEachLaunch`  
