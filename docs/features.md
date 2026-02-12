@@ -223,13 +223,6 @@
 **Recommended:** `0`  
 **Undo:** `1`
 
-### Disable Search Box Suggestions
-**Info:** This feature disables Bing search and web suggestions in the Windows Start Menu.  
-**Registry:** `HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer`  
-**Value:** `DisableSearchBoxSuggestions`  
-**Recommended:** `1`  
-**Undo:** `0`
-
 ### Align Start button to left
 **Info:** This feature will align the Start button to left  
 **Registry:** `HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced`  
@@ -358,6 +351,13 @@
 **Recommended:** `1`  
 **Undo:** `0`
 **Notes:** Only available on Copilot+ PCs (Windows 11 24H2 or newer, requires NPU).
+
+### Disable Search Box Suggestions
+**Info:** Windows Search is cluttered mess with suggestions from Microsoft, the day’s highlights, Top apps, AI Tools, Trending searches, Games for you, Trending news from the web, and, to make matters worse, there’s the Copilot logo on the top left. 
+**Registry:** `HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer`  
+**Value:** `DisableSearchBoxSuggestions`  
+**Recommended:** `1`  
+**Undo:** `0`
 
 ---
 
