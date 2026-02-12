@@ -498,10 +498,7 @@
 **Undo:** Not provided (you would need to reinstall apps manually).
 
 ### Remove Windows AI
-**Info:** Downloads and executes an external script intended to remove Windows AI components.  
-**Command:** `iwr https://raw.githubusercontent.com/zoicware/RemoveWindowsAI/main/RemoveWindowsAi.ps1 | iex`  
-**Requirements:** Internet connection.  
-**Notes:** This runs remote code directly in PowerShell. Only use if you trust the source.
+This script is no longer available as a plugin. You can now find it as an extension with its own interface in the tools section.
 
 ### Restart Explorer
 **Info:** Restarts Windows Explorer (explorer.exe). Useful after registry tweaks so changes apply immediately.  
