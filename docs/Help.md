@@ -133,7 +133,10 @@ Plugins are **optional tools** that add extra features to Winslop.
 You can install and manage them via **Main Menu → Manage plugins**.  
 Once installed, you’ll find them in the main tree under the **Plugins** section.
 
-Anyone can create plugins — a small demo pack + explanation is here:  
+Anyone can create plugins. This page explains how the plugin system works:
+https://github.com/builtbybel/Winslop/blob/main/docs/plugins.md
+
+And here’s a small demo plugin pack you can use as a starting point:
 https://github.com/builtbybel/CrapFixer/blob/main/plugins/DemoPluginPack.ps1
 </details>
 
